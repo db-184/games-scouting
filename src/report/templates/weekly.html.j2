@@ -1,0 +1,50 @@
+{% extends "base.html.j2" %}
+{% from "_card.html.j2" import render_card %}
+
+{% block subheader %}
+<p class="text-slate-600 mt-1">
+  {{ totals.sustained }} Sustained Climbers ·
+  {{ totals.fast }} Fast Climbers ·
+  {{ totals.new }} New Entrants ·
+  {{ totals.cross_platform }} ⚡ Cross-platform
+</p>
+{% if heartbeat.snapshots_this_week < 7 %}
+  <div class="mt-3 inline-block bg-amber-50 border border-amber-200 text-amber-900 text-sm px-3 py-2 rounded">
+    ⚠ Incomplete week — {{ heartbeat.snapshots_this_week }}/7 daily snapshots captured.
+    Signals may be noisier than usual.
+  </div>
+{% endif %}
+{% if cold_start %}
+  <div class="mt-3 inline-block bg-sky-50 border border-sky-200 text-sky-900 text-sm px-3 py-2 rounded">
+    ❄ Cold start — this report is based on less than 2 weeks of history.
+    Sustained Climber signal will be reliable from {{ cold_start.full_from_date }}.
+  </div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% for section_key, section in [('sustained', 'Sustained Climbers'), ('fast', 'Fast Climbers'), ('new', 'New Entrants')] %}
+<section class="mb-10">
+  <h2 class="text-xl font-semibold mb-4">{{ section }} ({{ sections[section_key]|length }})</h2>
+  {% if sections[section_key] %}
+    {% for game in sections[section_key] %}
+      {{ render_card(game) }}
+    {% endfor %}
+  {% else %}
+    <p class="text-slate-500 italic">No games in this category this week.</p>
+  {% endif %}
+</section>
+{% endfor %}
+
+{% if cross_platform_games %}
+<section class="mb-10">
+  <h2 class="text-xl font-semibold mb-4">⚡ Cross-platform signals ({{ cross_platform_games|length }})</h2>
+  <p class="text-sm text-slate-600 mb-4">These games are already listed in their signal sections above. Listed here as a filtered view.</p>
+  {% for game in cross_platform_games %}
+    {{ render_card(game) }}
+  {% endfor %}
+</section>
+{% endif %}
+
+{% endblock %}

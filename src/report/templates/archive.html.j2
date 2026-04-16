@@ -1,0 +1,23 @@
+{% extends "base.html.j2" %}
+
+{% block subheader %}
+<p class="text-slate-600 mt-1">Weekly reports, most recent first.</p>
+{% endblock %}
+
+{% block content %}
+<ul class="space-y-2">
+  {% for report in reports %}
+    <li>
+      <a class="text-blue-700 hover:underline" href="{{ report.slug }}/">{{ report.date }}</a>
+      <span class="text-slate-500 text-sm">
+        — {{ report.totals.sustained }} sustained,
+        {{ report.totals.fast }} fast,
+        {{ report.totals.new }} new
+        {% if report.totals.cross_platform %}, {{ report.totals.cross_platform }} ⚡{% endif %}
+      </span>
+    </li>
+  {% else %}
+    <li class="text-slate-500 italic">No reports yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
