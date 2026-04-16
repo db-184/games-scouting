@@ -1,0 +1,45 @@
+# Maps raw store genre identifiers to our watchlist buckets.
+# Buckets: match3, hypercasual, hybrid_casual, word_trivia, casual_sim
+# Any genre not listed here is excluded from the report.
+
+play_store:
+  # google-play-scraper returns genreId like "GAME_PUZZLE", "GAME_WORD", etc.
+  GAME_PUZZLE: match3
+  GAME_WORD: word_trivia
+  GAME_TRIVIA: word_trivia
+  GAME_EDUCATIONAL: word_trivia
+  GAME_CASUAL: hypercasual  # first-pass; refined by keyword heuristic in src/genre_filter.py
+  GAME_ARCADE: hypercasual
+  GAME_SIMULATION: casual_sim
+
+app_store:
+  # iTunes Search API returns primaryGenreName like "Games", secondary via "genres" array
+  # We key on the sub-genre strings iTunes returns
+  "Puzzle": match3
+  "Word": word_trivia
+  "Trivia": word_trivia
+  "Casual": hypercasual
+  "Arcade": hypercasual
+  "Simulation": casual_sim
+
+# Hybrid-casual is detected by keyword heuristic, not store genre (keyword rules in src/genre_filter.py).
+
+# Title/description keyword overrides applied after store-genre mapping:
+keyword_overrides:
+  match3:
+    - "match-3"
+    - "match 3"
+    - "tile match"
+  hypercasual:
+    - "hyper casual"
+    - ".io"
+  hybrid_casual:
+    - "merge"
+    - "idle"
+    - "tycoon"
+    - "clicker"
+  casual_sim:
+    - "farm"
+    - "cafe"
+    - "restaurant"
+    - "city builder"

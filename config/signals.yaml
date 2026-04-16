@@ -1,0 +1,22 @@
+fast_climber:
+  min_rank_jump: 20
+  window_days: 7
+  max_current_rank: 100
+
+new_entrant:
+  max_window_days: 14
+  play_store_chart_ceiling: 200
+  app_store_chart_ceiling: 100
+  recent_release_bonus_days: 90
+
+sustained_climber:
+  min_rising_days_out_of: [5, 7]  # ≥5 of last 7 days rank improved
+  alt_net_gain_threshold: 15      # OR net +15 over 7d
+  max_reversal_streak: 3          # with no >3-day reversal
+
+report:
+  max_games_per_section: 10
+  sections_priority_order:        # game is placed in highest-priority section it qualifies for
+    - sustained
+    - fast
+    - new

@@ -1,0 +1,17 @@
+play_store:
+  - IN
+  - US
+  - JP
+  - KR
+  - DE
+  - GB  # google-play-scraper uses ISO codes; GB = United Kingdom
+  - BR
+app_store:
+  - IN
+  - US
+  - JP
+  - KR
+  - CN
+  - DE
+  - GB
+  - BR
