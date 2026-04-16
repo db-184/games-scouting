@@ -1,6 +1,13 @@
-"""App Store scraping via Apple's official RSS marketing feeds and iTunes Search API.
+"""App Store scraping via Apple's iTunes RSS (legacy) and iTunes Search API.
 
-Both endpoints are free, no key required, and officially sanctioned for consumer use.
+The modern `rss.applemarketingtools.com` API lists all top apps without a
+genre filter — it would surface TurboTax, ChatGPT, etc. in our "top games"
+list. The older `itunes.apple.com/{country}/rss/...` endpoints still work
+and support a `genre=6014` filter for Games. This module uses the legacy
+URL for that reason; if Apple turns it off we'll need to migrate to filtering
+top-apps output via per-app iTunes lookups (expensive, ~8000 extra calls/day).
+
+Both endpoints are free and no key is required.
 """
 from __future__ import annotations
 
@@ -10,13 +17,14 @@ from typing import Any
 
 import requests
 
-RSS_BASE = "https://rss.applemarketingtools.com/api/v2"
+RSS_BASE = "https://itunes.apple.com"
 ITUNES_LOOKUP = "https://itunes.apple.com/lookup"
+GAMES_GENRE_ID = 6014
 
 CHART_RSS_MAP = {
-    "top_free": "top-free",
-    "top_grossing": "top-grossing",
-    "top_new": "top-free",  # Apple RSS has no dedicated "new games" feed — see play_store.py note
+    "top_free": "topfreeapplications",
+    "top_grossing": "topgrossingapplications",
+    "top_new": "newapplications",
 }
 
 REQUEST_TIMEOUT = 20
@@ -25,14 +33,20 @@ USER_AGENT = "games-scouting-agent/0.1"
 
 def fetch_top_chart(country: str, chart_type: str, num: int = 100) -> list[dict[str, Any]]:
     feed_slug = CHART_RSS_MAP[chart_type]
-    url = f"{RSS_BASE}/{country.lower()}/apps/{feed_slug}/{num}/games.json"
+    url = (
+        f"{RSS_BASE}/{country.lower()}/rss/{feed_slug}/"
+        f"limit={num}/genre={GAMES_GENRE_ID}/json"
+    )
     resp = requests.get(url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": USER_AGENT})
     resp.raise_for_status()
     data = resp.json()
-    results = data.get("feed", {}).get("results", [])
-    if not results:
+    entries = data.get("feed", {}).get("entry", [])
+    if not entries:
         raise RuntimeError(f"App Store returned empty result for {country}/{chart_type}")
-    return [{"rank": i + 1, "app_id": row["id"]} for i, row in enumerate(results)]
+    return [
+        {"rank": i + 1, "app_id": entry["id"]["attributes"]["im:id"]}
+        for i, entry in enumerate(entries)
+    ]
 
 
 def fetch_app_metadata(app_id: str, country: str) -> dict[str, Any]:
@@ -76,7 +90,6 @@ def _primary_sub_genre(raw: dict[str, Any]) -> str | None:
 def _parse_itunes_date(date_str: str | None) -> str | None:
     if not date_str:
         return None
-    # Format: "2026-02-12T00:00:00Z" — just take the date part
     return date_str[:10]
 
 

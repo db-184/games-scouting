@@ -6,10 +6,10 @@ from src.scrape.app_store import fetch_top_chart, fetch_app_metadata
 def _rss_fixture():
     return {
         "feed": {
-            "results": [
-                {"id": "111", "name": "Game A"},
-                {"id": "222", "name": "Game B"},
-                {"id": "333", "name": "Game C"},
+            "entry": [
+                {"im:name": {"label": "Game A"}, "id": {"label": "url", "attributes": {"im:id": "111"}}},
+                {"im:name": {"label": "Game B"}, "id": {"label": "url", "attributes": {"im:id": "222"}}},
+                {"im:name": {"label": "Game C"}, "id": {"label": "url", "attributes": {"im:id": "333"}}},
             ]
         }
     }
@@ -30,12 +30,27 @@ def test_fetch_top_chart_parses_apple_rss():
 
 def test_fetch_top_chart_empty_raises():
     mock = MagicMock()
-    mock.json.return_value = {"feed": {"results": []}}
+    mock.json.return_value = {"feed": {"entry": []}}
     mock.raise_for_status.return_value = None
     import pytest
     with patch("src.scrape.app_store.requests.get", return_value=mock):
         with pytest.raises(RuntimeError, match="empty"):
             fetch_top_chart(country="IN", chart_type="top_free", num=100)
+
+
+def test_fetch_top_chart_uses_games_genre_filter():
+    """Regression guard: URL must hit the genre=6014 legacy endpoint, not the
+    modern rss.applemarketingtools.com one which can't filter to games."""
+    mock = MagicMock()
+    mock.json.return_value = _rss_fixture()
+    mock.raise_for_status.return_value = None
+    with patch("src.scrape.app_store.requests.get", return_value=mock) as mock_get:
+        fetch_top_chart(country="US", chart_type="top_grossing", num=10)
+    called_url = mock_get.call_args[0][0]
+    assert "itunes.apple.com" in called_url
+    assert "topgrossingapplications" in called_url
+    assert "genre=6014" in called_url
+    assert "limit=10" in called_url
 
 
 def test_fetch_app_metadata_maps_itunes_fields():
