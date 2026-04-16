@@ -1,13 +1,13 @@
 # Games Scouting Agent — Progress Snapshot
 
-**Paused on:** 2026-04-16
-**Status:** 5 of 22 tasks complete. Foundation + scrapers done. Signal logic next.
+**Paused on:** 2026-04-16 (batch 2 complete)
+**Status:** 12 of 22 tasks complete. Foundation + scrapers + all signal logic done. Reporting, jobs, and CI next.
 
 ---
 
 ## What's built
 
-### Completed tasks (5/22)
+### Completed tasks (12/22)
 
 | # | Task | Commit |
 |---|------|--------|
@@ -18,19 +18,36 @@
 | 4 | Play Store scraper (via npm subprocess) | `66c3389` |
 | 5 | App Store scraper (initial) | `6239b91` |
 |   | App Store fix (legacy iTunes RSS with genre filter) | `e405972` |
+|   | Batch 1 pause marker | `165f540` |
+| 6 | VCR smoke tests on App Store scrapers | `a2c681a` |
+| 7 | Genre filter (store genre + keyword overrides) | `81ca72e` |
+| 8 | Fast Climber signal (≥20 rank jump in 7d) | `53c982e` |
+| 9 | New Entrant signal (first seen within 14d) | `8866b18` |
+| 10 | Sustained Climber signal (5-of-7 OR +15 net) | `7b57bdd` |
+| 11 | Cross-platform matcher + section composer | `91ee4c3` |
+| 12 | Metadata enrichment (scraper + genre_filter → db) | `505000f` |
 
 ### Test suite
 
-14 tests passing, all offline (mocked):
+41 tests passing, all offline (mocked or VCR cassettes):
 
 ```
 tests/test_app_store_scraper.py     4 tests
+tests/test_compose.py               2 tests
 tests/test_config.py                3 tests
+tests/test_cross_platform.py        3 tests
 tests/test_db.py                    3 tests
+tests/test_enrich.py                2 tests
+tests/test_fast_climber.py          5 tests
+tests/test_genre_filter.py          5 tests
+tests/test_new_entrant.py           4 tests
 tests/test_play_store_scraper.py    4 tests
+tests/test_scrape_smoke.py          2 tests   (VCR cassette replay)
+tests/test_sustained.py             4 tests
 ```
 
 Run with: `source .venv/bin/activate && pytest -v`
+CI-style offline run: `CI=true pytest -v` (VCR cassettes must exist; won't re-record)
 
 ### Live-tested endpoints (verified working)
 
@@ -62,20 +79,39 @@ games agent/
 ├── src/
 │   ├── __init__.py
 │   ├── config.py
+│   ├── genre_filter.py         ← Task 7
 │   ├── scrape/
 │   │   ├── __init__.py
 │   │   ├── app_store.py
 │   │   └── play_store.py
+│   ├── signals/                ← Tasks 8-12
+│   │   ├── __init__.py
+│   │   ├── compose.py
+│   │   ├── cross_platform.py
+│   │   ├── enrich.py
+│   │   ├── fast_climber.py
+│   │   ├── new_entrant.py
+│   │   └── sustained.py
 │   └── store/
 │       ├── __init__.py
 │       ├── db.py
 │       └── schema.sql
 └── tests/
     ├── __init__.py
+    ├── conftest.py             ← Shared db fixture + seed_ranks helper
+    ├── fixtures/cassettes/     ← VCR recordings (2 YAML files, ~440 KB total)
     ├── test_app_store_scraper.py
+    ├── test_compose.py
     ├── test_config.py
+    ├── test_cross_platform.py
     ├── test_db.py
-    └── test_play_store_scraper.py
+    ├── test_enrich.py
+    ├── test_fast_climber.py
+    ├── test_genre_filter.py
+    ├── test_new_entrant.py
+    ├── test_play_store_scraper.py
+    ├── test_scrape_smoke.py
+    └── test_sustained.py
 ```
 
 ---
@@ -127,23 +163,28 @@ games agent/
 
 ## Where to resume
 
-### Next up: Task 6 — VCR smoke tests
+### Next up: Task 13 — Jinja templates
 
-**Scope:** Recorded-HTTP-fixture tests using `vcrpy` to detect changes in the shape of external API responses without hitting the live network in CI.
+**Scope:** Build 4 HTML templates (base.html.j2, weekly.html.j2, archive.html.j2, _card.html.j2) with Tailwind CSS via CDN. Starts the reporting layer.
 
-**Adjustments from plan given deviations above:**
-- App Store cassette path: records against legacy `itunes.apple.com` URLs (no plan change; the URL is already correct in the updated scraper).
-- Play Store cassette: the plan already said "may not record cleanly"; even more true now since subprocess doesn't go through `requests`. The test should skip gracefully in CI when the cassette is absent.
+### After Task 13 — Tasks 14-22
 
-### After Task 6 — Task 7 onward
+- **Task 14:** HTML renderer (`build_game_view`, `render_weekly`, `render_archive`)
+- **Task 15:** Slack headline composer + webhook poster
+- **Task 16:** Daily job orchestrator — scrape all charts, retry, commit DB
+- **Task 17:** Weekly job orchestrator — compute signals, enrich, render, post Slack
+- **Task 18:** Daily GitHub Actions workflow *(needs `actions/setup-node@v4` added)*
+- **Task 19:** Weekly GitHub Actions workflow
+- **Task 20:** Dry-run workflow *(needs `actions/setup-node@v4` added)*
+- **Task 21:** Logging + heartbeat polish
+- **Task 22:** Full README + ops runbook
 
-Signals (7-11), enrichment (12), rendering (13-15), orchestrators (16-17), CI (18-20), polish (21-22). Most of this is pure Python with no external surprises. The plan as written should work; the only consequential changes needed are:
+### Outstanding plan adjustments still required
 
-- **Task 18 (daily CI workflow):** add `actions/setup-node@v4` step + `npm install` before `python -m src.jobs.daily`. The plan's YAML needs those two lines inserted.
-- **Task 20 (dry-run CI workflow):** same Node setup.
-- **Task 17 (weekly job orchestrator):** no change — does not touch the Play Store scraper directly.
+- **Task 18 (daily CI workflow):** add `actions/setup-node@v4` + `npm install` steps before Python install
+- **Task 20 (dry-run CI workflow):** same Node setup
 
-No other plan content is affected.
+No other plan content needs adjustment.
 
 ---
 
@@ -151,9 +192,9 @@ No other plan content is affected.
 
 1. `cd "/Users/apple/Desktop/games agent"`
 2. `source .venv/bin/activate`
-3. `pytest -v` — confirm 14 tests still pass
+3. `pytest -v` — confirm 41 tests still pass
 4. Open the plan: `docs/superpowers/plans/2026-04-16-games-scouting-agent.md`
-5. Task 6 begins at the "### Task 6: VCR smoke tests for scrapers" section
+5. Task 13 begins at the "### Task 13: Jinja templates" section
 
 When resuming, the conversation can reference this PROGRESS.md to restore context.
 
