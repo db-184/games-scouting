@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Local env
+.env
+.env.local
+
+# Build artifacts
+dist/
+build/
+
+# Keep these:
+# data/scouting.sqlite is committed intentionally (see spec §6.5)
+# logs/*.log are committed intentionally (see spec §10)
