@@ -1,0 +1,9 @@
+{
+  "name": "games-scouting-agent-node",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Node helpers for Play Store top charts (the Python google-play-scraper port lacks list support)",
+  "dependencies": {
+    "google-play-scraper": "^10.0.0"
+  }
+}

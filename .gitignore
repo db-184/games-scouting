@@ -26,3 +26,7 @@ build/
 # Keep these:
 # data/scouting.sqlite is committed intentionally (see spec §6.5)
 # logs/*.log are committed intentionally (see spec §10)
+
+# Node
+node_modules/
+package-lock.json
