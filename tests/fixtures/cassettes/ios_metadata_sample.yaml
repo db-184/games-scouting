@@ -1,0 +1,222 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      User-Agent:
+      - games-scouting-agent/0.1
+    method: GET
+    uri: https://itunes.apple.com/lookup?id=479516143&country=us&entity=software
+  response:
+    body:
+      string: "\n\n\n{\n \"resultCount\":1,\n \"results\": [\n{\n\"screenshotUrls\":[\"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/07/47/6f/07476fcd-1ecf-18ca-e7f7-364d6c6cd5e1/pr_source.png/406x228bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/74/a6/ed/74a6ed67-e5e9-a1ae-3233-225b651d6bf0/pr_source.png/406x228bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/be/4f/92/be4f92ef-8b4b-94e3-cd78-da32db4193b0/pr_source.png/406x228bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/64/03/ee/6403eee1-4fbf-6b89-d2ec-6fc410182689/pr_source.png/406x228bb.png\",
+        \n\"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/1f/6b/4e/1f6b4ef1-3ebb-526a-b6fb-a0d1301e30df/b66be1fb-63e6-48ee-b33e-201f6e5229b1_TrailsAndTales_Apple_2208x1242_EN.png/406x228bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a2/ed/c4/a2edc497-b844-0e65-a682-f427f4e7505c/pr_source.png/406x228bb.png\",
+        \n\"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/77/db/86/77db860c-9b7e-f5ee-c849-f98640e6f9c9/e8534913-e159-4489-a2b2-ff14785e2ca9_LushCaves_2208x1242_GB.png/406x228bb.png\",
+        \n\"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/eb/58/4aeb585d-ec15-a57b-7475-9de908d27446/dbcfdd4e-840f-4b82-824a-4db2201f31d6_Goat_2208x1242_GB.png/406x228bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d7/85/2c/d7852cb7-013e-16ed-e77d-734eec50cc70/pr_source.png/406x228bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d3/24/0e/d3240e89-cfae-f07e-b506-eb60987a55a7/pr_source.png/406x228bb.png\"],
+        \n\"ipadScreenshotUrls\":[\"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/be/e0/bd/bee0bd58-7fd7-0203-2507-0b95bc2a3f51/pr_source.png/552x414bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ee/d4/7e/eed47e11-d24f-44a7-688b-4307feba8c52/pr_source.png/552x414bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4c/79/81/4c798177-1434-80d7-ddd6-26a6e7ac3d14/pr_source.png/552x414bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b9/ba/80/b9ba80e9-f9de-f165-2b54-85d8dce143b3/pr_source.png/552x414bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4e/d6/52/4ed65285-bd7b-868b-9ed4-449784f8b3a4/pr_source.png/552x414bb.png\",
+        \n\"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/62/c5/d7/62c5d717-4644-4725-27d0-e7024c72a067/f5708ab1-d38d-4d3b-b2d5-f076cd1144e3_LushCaves_2732x2048_GB.png/552x414bb.png\",
+        \n\"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/36/47/88/364788a0-98ae-d983-2587-e5eb60cda29d/266693f7-0348-41b5-bee0-3f342edf0a92_Goat_2732x2048_GB.png/552x414bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/21/0e/61210e97-a8ee-8237-622a-6433cf9078f1/pr_source.png/552x414bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/1c/10/261c104d-c22f-3034-2675-21efd4096ff9/pr_source.png/552x414bb.png\",
+        \"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a2/eb/56/a2eb56f5-f717-7c4c-c7b0-891c89ab3027/pr_source.png/552x414bb.png\"],
+        \"appletvScreenshotUrls\":[], \n\"artworkUrl512\":\"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/d9/2d/22d92dca-ecec-60da-a0fc-df0d35040447/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg\",
+        \"isGameCenterEnabled\":false, \"features\":[\"iosUniversal\"], \n\"supportedDevices\":[\"iPhone5s-iPhone5s\",
+        \"iPadAir-iPadAir\", \"iPadAirCellular-iPadAirCellular\", \"iPadMiniRetina-iPadMiniRetina\",
+        \"iPadMiniRetinaCellular-iPadMiniRetinaCellular\", \"iPhone6-iPhone6\", \"iPhone6Plus-iPhone6Plus\",
+        \"iPadAir2-iPadAir2\", \"iPadAir2Cellular-iPadAir2Cellular\", \"iPadMini3-iPadMini3\",
+        \"iPadMini3Cellular-iPadMini3Cellular\", \"iPodTouchSixthGen-iPodTouchSixthGen\",
+        \"iPhone6s-iPhone6s\", \"iPhone6sPlus-iPhone6sPlus\", \"iPadMini4-iPadMini4\",
+        \"iPadMini4Cellular-iPadMini4Cellular\", \"iPadPro-iPadPro\", \"iPadProCellular-iPadProCellular\",
+        \"iPadPro97-iPadPro97\", \"iPadPro97Cellular-iPadPro97Cellular\", \"iPhoneSE-iPhoneSE\",
+        \"iPhone7-iPhone7\", \"iPhone7Plus-iPhone7Plus\", \"iPad611-iPad611\", \"iPad612-iPad612\",
+        \"iPad71-iPad71\", \"iPad72-iPad72\", \"iPad73-iPad73\", \"iPad74-iPad74\",
+        \"iPhone8-iPhone8\", \"iPhone8Plus-iPhone8Plus\", \"iPhoneX-iPhoneX\", \"iPad75-iPad75\",
+        \"iPad76-iPad76\", \"iPhoneXS-iPhoneXS\", \"iPhoneXSMax-iPhoneXSMax\", \"iPhoneXR-iPhoneXR\",
+        \"iPad812-iPad812\", \"iPad834-iPad834\", \"iPad856-iPad856\", \"iPad878-iPad878\",
+        \"iPadMini5-iPadMini5\", \"iPadMini5Cellular-iPadMini5Cellular\", \"iPadAir3-iPadAir3\",
+        \"iPadAir3Cellular-iPadAir3Cellular\", \"iPodTouchSeventhGen-iPodTouchSeventhGen\",
+        \"iPhone11-iPhone11\", \"iPhone11Pro-iPhone11Pro\", \"iPadSeventhGen-iPadSeventhGen\",
+        \"iPadSeventhGenCellular-iPadSeventhGenCellular\", \"iPhone11ProMax-iPhone11ProMax\",
+        \"iPhoneSESecondGen-iPhoneSESecondGen\", \"iPadProSecondGen-iPadProSecondGen\",
+        \"iPadProSecondGenCellular-iPadProSecondGenCellular\", \"iPadProFourthGen-iPadProFourthGen\",
+        \"iPadProFourthGenCellular-iPadProFourthGenCellular\", \"iPhone12Mini-iPhone12Mini\",
+        \"iPhone12-iPhone12\", \"iPhone12Pro-iPhone12Pro\", \"iPhone12ProMax-iPhone12ProMax\",
+        \"iPadAir4-iPadAir4\", \"iPadAir4Cellular-iPadAir4Cellular\", \"iPadEighthGen-iPadEighthGen\",
+        \"iPadEighthGenCellular-iPadEighthGenCellular\", \"iPadProThirdGen-iPadProThirdGen\",
+        \"iPadProThirdGenCellular-iPadProThirdGenCellular\", \"iPadProFifthGen-iPadProFifthGen\",
+        \"iPadProFifthGenCellular-iPadProFifthGenCellular\", \"iPhone13Pro-iPhone13Pro\",
+        \"iPhone13ProMax-iPhone13ProMax\", \"iPhone13Mini-iPhone13Mini\", \"iPhone13-iPhone13\",
+        \"iPadMiniSixthGen-iPadMiniSixthGen\", \"iPadMiniSixthGenCellular-iPadMiniSixthGenCellular\",
+        \"iPadNinthGen-iPadNinthGen\", \"iPadNinthGenCellular-iPadNinthGenCellular\",
+        \"iPhoneSEThirdGen-iPhoneSEThirdGen\", \"iPadAirFifthGen-iPadAirFifthGen\",
+        \"iPadAirFifthGenCellular-iPadAirFifthGenCellular\", \"iPhone14-iPhone14\",
+        \"iPhone14Plus-iPhone14Plus\", \"iPhone14Pro-iPhone14Pro\", \"iPhone14ProMax-iPhone14ProMax\",
+        \"iPadTenthGen-iPadTenthGen\", \"iPadTenthGenCellular-iPadTenthGenCellular\",
+        \"iPadPro11FourthGen-iPadPro11FourthGen\", \"iPadPro11FourthGenCellular-iPadPro11FourthGenCellular\",
+        \"iPadProSixthGen-iPadProSixthGen\", \"iPadProSixthGenCellular-iPadProSixthGenCellular\",
+        \"iPhone15-iPhone15\", \"iPhone15Plus-iPhone15Plus\", \"iPhone15Pro-iPhone15Pro\",
+        \"iPhone15ProMax-iPhone15ProMax\", \"iPadAir11M2-iPadAir11M2\", \"iPadAir11M2Cellular-iPadAir11M2Cellular\",
+        \"iPadAir13M2-iPadAir13M2\", \"iPadAir13M2Cellular-iPadAir13M2Cellular\",
+        \"iPadPro11M4-iPadPro11M4\", \"iPadPro11M4Cellular-iPadPro11M4Cellular\",
+        \"iPadPro13M4-iPadPro13M4\", \"iPadPro13M4Cellular-iPadPro13M4Cellular\",
+        \"iPhone16-iPhone16\", \"iPhone16Plus-iPhone16Plus\", \"iPhone16Pro-iPhone16Pro\",
+        \"iPhone16ProMax-iPhone16ProMax\", \"iPadMiniA17Pro-iPadMiniA17Pro\", \"iPadMiniA17ProCellular-iPadMiniA17ProCellular\",
+        \"iPhone16e-iPhone16e\", \"iPadA16-iPadA16\", \"iPadA16Cellular-iPadA16Cellular\",
+        \"iPadAir11M3-iPadAir11M3\", \"iPadAir11M3Cellular-iPadAir11M3Cellular\",
+        \"iPadAir13M3-iPadAir13M3\", \"iPadAir13M3Cellular-iPadAir13M3Cellular\",
+        \"iPhone17Pro-iPhone17Pro\", \"iPhone17ProMax-iPhone17ProMax\", \"iPhone17-iPhone17\",
+        \"iPhoneAir-iPhoneAir\", \"iPadPro11M5-iPadPro11M5\", \"iPadPro11M5Cellular-iPadPro11M5Cellular\",
+        \"iPadPro13M5-iPadPro13M5\", \"iPadPro13M5Cellular-iPadPro13M5Cellular\",
+        \"iPhone17e-iPhone17e\", \"iPadAir11M4-iPadAir11M4\", \"iPadAir11M4Cellular-iPadAir11M4Cellular\",
+        \"iPadAir13M4-iPadAir13M4\", \"iPadAir13M4Cellular-iPadAir13M4Cellular\"],
+        \"advisories\":[\"Infrequent/Mild Cartoon or Fantasy Violence\", \"Infrequent/Mild
+        Contests\"], \"kind\":\"software\", \"artistViewUrl\":\"https://apps.apple.com/us/developer/mojang/id479516146?uo=4\",
+        \n\"artworkUrl60\":\"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/d9/2d/22d92dca-ecec-60da-a0fc-df0d35040447/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/60x60bb.jpg\",
+        \n\"artworkUrl100\":\"https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/d9/2d/22d92dca-ecec-60da-a0fc-df0d35040447/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/100x100bb.jpg\",
+        \"minimumOsVersion\":\"13.0\", \"languageCodesISO2A\":[\"DA\", \"NL\", \"EN\",
+        \"FI\", \"FR\", \"DE\", \"EL\", \"HU\", \"ID\", \"IT\", \"JA\", \"KO\", \"NB\",
+        \"PL\", \"PT\", \"RU\", \"ZH\", \"ES\", \"SV\", \"ZH\", \"TR\", \"UK\"], \"fileSizeBytes\":\"1247993856\",
+        \"formattedPrice\":\"$6.99\", \"userRatingCountForCurrentVersion\":804742,
+        \"trackContentRating\":\"9+\", \"averageUserRatingForCurrentVersion\":4.50447000000000041808334572124294936656951904296875,
+        \"artistId\":479516146, \"artistName\":\"Mojang\", \"genres\":[\"Games\",
+        \"Simulation\", \"Adventure\"], \"bundleId\":\"com.mojang.minecraftpe\", \"primaryGenreName\":\"Games\",
+        \"primaryGenreId\":6014, \"genreIds\":[\"6014\", \"7015\", \"7002\"], \"sellerName\":\"Mojang
+        AB\", \"trackId\":479516143, \"trackName\":\"Minecraft: Dream it, Build it!\",
+        \"isVppDeviceBasedLicensingEnabled\":true, \"currentVersionReleaseDate\":\"2026-04-06T17:06:08Z\",
+        \"releaseNotes\":\"Various bug fixes!\", \"version\":\"26.13\", \"wrapperType\":\"software\",
+        \"currency\":\"USD\", \n\"description\":\"Dive into an open world of building,
+        crafting and survival. Gather resources, survive the night, and build whatever
+        you can imagine one block at a time. Explore and craft your way through a
+        completely open world where you can play with friends, build a city, start
+        a farm, mine deep into the ground, face mysterious enemies, or just experiment
+        to the limits of your imagination! \\n \\nThe possibilities are endless. Embark
+        on an epic adventure and play with friends, building from the ground up. Build
+        and expand in Creative mode, where you can craft from unlimited resources.
+        Survive the night, face intense battles, craft tools, and fend off danger
+        in Survival mode. With seamless cross-platform and multiplayer gameplay on
+        Minecraft: Bedrock Edition, you can adventure solo or with friends, and discover
+        an infinite, randomly generated world filled with blocks to mine, biomes to
+        explore, and mobs to befriend (or battle)!  \\n \\nIn Minecraft, the world
+        is yours to shape! \\n \\nCREATE YOUR WORLD \\n\u2022 Build anything from
+        the ground up \\n\u2022 Craft from special resources and tools to create brand
+        new structures and landscapes \\n\u2022 Explore an endless open world full
+        of different biomes and creatures \\n\u2022 Minecraft Marketplace \u2013 Get
+        creator-made add-ons, thrilling worlds, and stylish cosmetics on Minecraft
+        Marketplace \\n\u2022 Connect with millions of players on community servers,
+        or subscribe to Realms Plus to cross-play with up to 10 friends on your own
+        private server \\n\u2022 Slash commands \u2013 Tweak how the game plays: you
+        can change the weather, summon mobs, change the time of day, and more \\n\u2022
+        Add-ons \u2013 Customize your experience even further with add-ons! If you're
+        more tech-inclined, you can modify your game to create new resource packs
+        \\n \\nMULTIPLAYER ONLINE GAMES \\n\u2022 Join free massive multiplayer servers
+        and play with thousands of others \\n\u2022 Multiplayer servers allow you
+        to play with up to 4 players online with a free Xbox Live account \\n\u2022
+        Build, battle and explore other realms. With Realms and Realms Plus, you can
+        play with up to 10 friends cross-platform, anytime, anywhere on Realms, your
+        own private server that we host for you \\n\u2022 With Realms Plus, get instant
+        access to over 150 Marketplace items with new additions each month. Share
+        with friends on your own private Realms server*  \\n\u2022 Connect and play
+        with players across the world, wherever they are, and join in on MMO battles
+        for survival in other worlds \\n\u2022 Discover gigantic community-run worlds,
+        compete in unique mini-games and socialize in lobbies full of fellow Minecrafters
+        \\n \\nSUPPORT: https://www.minecraft.net/help \\nLEARN MORE: https://www.minecraft.net/
+        \\n\\nHere are the links to our Privacy Policy and Terms and Conditions:\\nPrivacy
+        Policy: https://www.minecraft.net/privacy/gdpr\\nTerms and Conditions: https://account.mojang.com/terms\\n
+        \\nMINIMUM RECOMMENDED SPECIFICATION \\n \\nTo check the requirements for
+        your device visit: https://help.minecraft.net/hc/en-us/articles/4409172223501
+        \\n \\n*Realms & Realms Plus: Try a free 30-day trial in-app. \\n\\nMinecraft
+        may request the following optional permissions, which require your consent.
+        You can continue to use Minecraft without granting these permissions; however,
+        some features may be limited or unavailable.\\nFor more information, please
+        see below:\\n\u2022 Local Network: To find other devices on the same Wi\u2011Fi
+        network for multiplayer gameplay.\\n\u2022 App Tracking: To deliver personalized
+        ads and improve application experience\", \"averageUserRating\":4.50447000000000041808334572124294936656951904296875,
+        \"contentAdvisoryRating\":\"9+\", \"trackCensoredName\":\"Minecraft: Dream
+        it, Build it!\", \"trackViewUrl\":\"https://apps.apple.com/us/app/minecraft-dream-it-build-it/id479516143?uo=4\",
+        \"releaseDate\":\"2011-11-17T08:00:00Z\", \"price\":6.99, \"userRatingCount\":804742}]\n}\n\n\n"
+    headers:
+      Cache-Control:
+      - max-age=86400
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '4393'
+      Content-Type:
+      - text/javascript; charset=utf-8
+      Date:
+      - Thu, 16 Apr 2026 16:29:03 GMT
+      Server:
+      - daiquiri/5
+      Vary:
+      - Accept-Encoding
+      X-Apple-Partner:
+      - origin.0
+      X-Cache:
+      - TCP_MISS from a106-51-42-22.deploy.akamaitechnologies.com (AkamaiGHost/22.4.5.1-9ac4f7794220c9cdbe74f55d0b8e8d0f)
+        (-)
+      X-Cache-Remote:
+      - TCP_REFRESH_MISS from a106-51-42-6.deploy.akamaitechnologies.com (AkamaiGHost/22.4.5.1-9ac4f7794220c9cdbe74f55d0b8e8d0f)
+        (S)
+      X-True-Cache-Key:
+      - /L/itunes.apple.com/lookup vcd=2897 ci2=country=us&entity=software&id=479516143///
+      apple-originating-system:
+      - MZStoreServices
+      apple-seq:
+      - '0.0'
+      apple-timing-app:
+      - 52 ms
+      apple-tk:
+      - 'false'
+      b3:
+      - 3e5796514fb2cd81e08f73feb7bf1fa6-09d8d1ed3f426932
+      content-disposition:
+      - attachment; filename=1.txt
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-apple-application-instance:
+      - '6501830'
+      x-apple-application-site:
+      - MR22
+      x-apple-jingle-correlation-key:
+      - HZLZMUKPWLGYDYEPOP7LPPY7UY
+      x-apple-orig-url:
+      - https://itunes.apple.com/lookup?id=479516143&country=us&entity=software
+      x-apple-request-uuid:
+      - 3e579651-4fb2-cd81-e08f-73feb7bf1fa6
+      x-apple-translated-wo-url:
+      - /WebObjects/MZStoreServices.woa/ws/wsLookup?id=479516143&country=us&entity=software&urlDesc=
+      x-b3-spanid:
+      - 09d8d1ed3f426932
+      x-b3-traceid:
+      - 3e5796514fb2cd81e08f73feb7bf1fa6
+      x-content-type-options:
+      - nosniff
+      x-daiquiri-debug-worker-pid:
+      - '10054'
+      x-daiquiri-instance:
+      - daiquiri:12282003:mr47p00it-qujn03120502:7987:26HOTFIX15:daiquiri-amp-store-l7shared-ext-001-mr
+      x-responding-instance:
+      - 'MZStoreServices:6501830:::'
+      x-webobjects-loadaverage:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1
