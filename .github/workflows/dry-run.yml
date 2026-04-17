@@ -1,0 +1,32 @@
+name: Dry-run weekly (manual only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_webhook_url:
+        description: "Slack webhook to post to (leave empty to skip Slack)"
+        required: false
+        type: string
+
+jobs:
+  dry_run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - run: pip install -e ".[dev]"
+      - name: Run weekly report into preview dir
+        env:
+          SLACK_WEBHOOK_URL: ${{ inputs.test_webhook_url }}
+          REPORT_BASE_URL: "https://example.invalid/preview"
+          REPORT_OUT_OVERRIDE: docs-preview
+          CI: "true"
+        run: python -m src.jobs.weekly
+      - name: Upload preview as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-preview
+          path: docs-preview/
