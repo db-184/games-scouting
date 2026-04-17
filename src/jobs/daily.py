@@ -106,9 +106,9 @@ def main() -> None:
     from src.config import load_config
     from src.store.db import connect, init_schema
 
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
-
     repo_root = Path(__file__).parent.parent.parent
+    from src.logging_setup import configure
+    configure(repo_root, "daily")
     config = load_config(repo_root / "config")
     db_path = repo_root / "data" / "scouting.sqlite"
     db_path.parent.mkdir(exist_ok=True)
