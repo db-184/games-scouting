@@ -39,6 +39,44 @@ def test_enrich_refreshes_metadata_for_signal_hits(db):
     assert rows[1]["genre_bucket"] == "match3"
 
 
+def test_enrich_skips_apps_recently_cached(db):
+    # com.cached was enriched 3 days ago; com.fresh has never been seen.
+    # With cache_max_age_days=7, com.cached must be skipped (no fetch); com.fresh must be fetched.
+    upsert_app(
+        db, app_id="com.cached", platform="play",
+        title="Cached App", developer="X", genre_raw="GAME_CASUAL",
+        genre_bucket="hypercasual", release_date="2026-01-01",
+        icon_url="u", description="d", price_tier="free_iap",
+        screenshots_json="[]", store_url="https://play/cached",
+        last_seen="2026-05-01",
+    )
+    db.commit()
+
+    candidates = [
+        {"app_id": "com.cached", "platform": "play"},
+        {"app_id": "com.fresh",  "platform": "play"},
+    ]
+    fresh_meta = {
+        "app_id": "com.fresh", "platform": "play", "title": "Fresh", "developer": "Y",
+        "genre_raw": "GAME_CASUAL", "release_date": "2026-04-01", "icon_url": "u",
+        "description": "d", "price_tier": "free_iap", "screenshots_json": "[]",
+        "store_url": "https://play/fresh", "rating_avg": 4.1, "rating_count": 50,
+    }
+
+    with patch("src.signals.enrich.play_fetch_app_metadata", return_value=fresh_meta) as mock_play:
+        enrich_qualifying_apps(
+            db, candidates, as_of="2026-05-04",
+            genres_cfg={
+                "play_store": {"GAME_CASUAL": "hypercasual"},
+                "app_store": {}, "keyword_overrides": {},
+            },
+            cache_max_age_days=7,
+        )
+
+    assert mock_play.call_count == 1
+    assert mock_play.call_args.args[0] == "com.fresh"
+
+
 def test_enrich_tolerates_individual_failures(db):
     candidates = [
         {"app_id": "com.good", "platform": "play"},

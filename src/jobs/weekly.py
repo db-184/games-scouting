@@ -42,18 +42,29 @@ def run_weekly(
     new_hits = [_tag(h, "new", score=-h["current_rank"]) for h in find_new_entrants(conn, as_of=as_of_str, config=config["signals"])]
     sustained_hits = [_tag(h, "sustained", score=h["net_gain"]) for h in find_sustained_climbers(conn, as_of=as_of_str, config=config["signals"])]
 
-    # 2. Compose sections with priority dedup
-    max_per = config["signals"]["report"]["max_games_per_section"]
+    # 2. Compose sections with priority dedup, oversampling so that genre-filtering
+    #    in step 4 can drop out-of-scope candidates without leaving the section short.
+    report_cfg = config["signals"]["report"]
+    max_per = report_cfg["max_games_per_section"]
+    oversample = report_cfg.get("oversample_factor", 1)
     sections_raw = compose_sections(
-        fast=fast_hits, new=new_hits, sustained=sustained_hits, max_per_section=max_per,
+        fast=fast_hits, new=new_hits, sustained=sustained_hits,
+        max_per_section=max_per * oversample,
     )
 
-    # 3. Enrich all qualifying apps (fetch fresh metadata + ratings + genre classification)
+    # 3. Enrich all qualifying apps (fetch fresh metadata + ratings + genre classification).
+    #    Skip apps seen recently — genre rarely changes and enrichment is the slow step.
+    cache_days = report_cfg.get("enrichment_cache_days", 0)
     qualifying = [item for items in sections_raw.values() for item in items]
-    enrich_qualifying_apps(conn, qualifying, as_of=as_of_str, genres_cfg=config["genres"])
+    enrich_qualifying_apps(
+        conn, qualifying, as_of=as_of_str, genres_cfg=config["genres"],
+        cache_max_age_days=cache_days,
+    )
 
-    # 4. Filter by watchlist genre: a qualifying app without a matching genre_bucket is excluded
-    sections_filtered = {k: _filter_by_genre(conn, items) for k, items in sections_raw.items()}
+    # 4. Filter by watchlist genre, then truncate to max_per.
+    sections_filtered = {
+        k: _filter_by_genre(conn, items)[:max_per] for k, items in sections_raw.items()
+    }
 
     # 5. Build cross-platform matches from the enriched candidate set
     enriched_rows = conn.execute(

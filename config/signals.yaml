@@ -16,6 +16,8 @@ sustained_climber:
 
 report:
   max_games_per_section: 10
+  oversample_factor: 5            # claim N×max candidates pre-genre-filter to absorb out-of-scope drops
+  enrichment_cache_days: 7        # skip re-fetching metadata for apps enriched within last N days
   sections_priority_order:        # game is placed in highest-priority section it qualifies for
     - sustained
     - fast

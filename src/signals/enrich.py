@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import logging
 import sqlite3
+from datetime import date, timedelta
 from typing import Any
 
 from src.genre_filter import classify_bucket
@@ -23,13 +24,24 @@ def enrich_qualifying_apps(
     as_of: str,
     genres_cfg: dict[str, Any],
     country_for_lookup: str = "US",  # iTunes metadata varies slightly by country; US is stable
+    cache_max_age_days: int = 0,
 ) -> None:
+    cache_cutoff = (date.fromisoformat(as_of) - timedelta(days=cache_max_age_days)).isoformat() if cache_max_age_days else None
+
     seen: set[tuple[str, str]] = set()
     for c in candidates:
         key = (c["app_id"], c["platform"])
         if key in seen:
             continue
         seen.add(key)
+
+        if cache_cutoff is not None:
+            row = conn.execute(
+                "SELECT last_seen FROM apps WHERE app_id = ? AND platform = ?",
+                (c["app_id"], c["platform"]),
+            ).fetchone()
+            if row and row["last_seen"] >= cache_cutoff:
+                continue
 
         try:
             if c["platform"] == "play":
