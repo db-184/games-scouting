@@ -19,6 +19,13 @@ from src.signals.sustained import find_sustained_climbers
 log = logging.getLogger(__name__)
 
 
+def latest_snapshot_date(conn: sqlite3.Connection) -> date | None:
+    row = conn.execute("SELECT MAX(snapshot_date) FROM chart_snapshots").fetchone()
+    if row is None or row[0] is None:
+        return None
+    return date.fromisoformat(row[0])
+
+
 def run_weekly(
     *,
     conn: sqlite3.Connection,
@@ -208,17 +215,20 @@ def main() -> None:
         "genres": cfg.genres,
     }
 
-    # Also write a sidecar totals.json for archive rendering
+    as_of = latest_snapshot_date(conn) or date.today()
+    if as_of != date.today():
+        log.warning("no snapshot for today (%s); using latest available %s", date.today(), as_of)
+
     result = run_weekly(
         conn=conn,
-        as_of=date.today(),
+        as_of=as_of,
         config=cfg_dict,
         out_dir=out_dir,
         base_url=os.environ["REPORT_BASE_URL"],
         slack_webhook_url=os.environ.get("SLACK_WEBHOOK_URL"),
     )
     import json as _json
-    (out_dir / date.today().isoformat() / "totals.json").write_text(_json.dumps(result["totals"]))
+    (out_dir / as_of.isoformat() / "totals.json").write_text(_json.dumps(result["totals"]))
 
 
 if __name__ == "__main__":
