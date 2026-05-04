@@ -1,1 +1,9 @@
 2026-05-04 07:29:53,643 INFO src.report.slack slack headline posted, 341 bytes
+2026-05-04 13:41:56,756 WARNING src.signals.enrich metadata fetch failed for play/br.bet.betao: App not found(404).
+2026-05-04 13:41:57,154 WARNING src.signals.enrich metadata fetch failed for ios/6450693428: iTunes lookup returned no result for id=6450693428 country=US
+2026-05-04 13:41:57,612 WARNING src.signals.enrich metadata fetch failed for ios/1439754823: iTunes lookup returned no result for id=1439754823 country=US
+2026-05-04 13:41:57,970 WARNING src.signals.enrich metadata fetch failed for ios/1618911882: iTunes lookup returned no result for id=1618911882 country=US
+2026-05-04 13:41:58,469 WARNING src.signals.enrich metadata fetch failed for play/com.mobile.legends: App not found(404).
+2026-05-04 13:41:58,852 WARNING src.signals.enrich metadata fetch failed for play/com.betboom.kmm: App not found(404).
+2026-05-04 13:41:59,157 WARNING src.signals.enrich metadata fetch failed for ios/1582390510: iTunes lookup returned no result for id=1582390510 country=US
+2026-05-04 13:41:59,217 WARNING src.signals.enrich metadata fetch failed for ios/6443824730: iTunes lookup returned no result for id=6443824730 country=US
