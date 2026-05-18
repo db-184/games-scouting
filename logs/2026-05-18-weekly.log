@@ -1,0 +1,7 @@
+2026-05-18 08:29:26,280 WARNING __main__ no snapshot for today (2026-05-18); using latest available 2026-05-17
+2026-05-18 08:29:37,060 WARNING src.signals.enrich metadata fetch failed for ios/848091833: iTunes lookup returned no result for id=848091833 country=US
+2026-05-18 08:29:39,632 WARNING src.signals.enrich metadata fetch failed for ios/6739554561: iTunes lookup returned no result for id=6739554561 country=US
+2026-05-18 08:29:40,774 WARNING src.signals.enrich metadata fetch failed for ios/6760764416: iTunes lookup returned no result for id=6760764416 country=US
+2026-05-18 08:29:40,953 WARNING src.signals.enrich metadata fetch failed for ios/6761372939: iTunes lookup returned no result for id=6761372939 country=US
+2026-05-18 08:29:42,150 WARNING src.signals.enrich metadata fetch failed for ios/6768215104: iTunes lookup returned no result for id=6768215104 country=US
+2026-05-18 08:29:44,722 INFO src.report.slack slack headline posted, 359 bytes
