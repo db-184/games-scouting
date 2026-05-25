@@ -1,0 +1,7 @@
+2026-05-25 08:43:32,880 WARNING __main__ no snapshot for today (2026-05-25); using latest available 2026-05-24
+2026-05-25 08:43:42,923 WARNING src.signals.enrich metadata fetch failed for play/com.pjsekai.kr: App not found(404).
+2026-05-25 08:43:45,865 WARNING src.signals.enrich metadata fetch failed for ios/6761836011: iTunes lookup returned no result for id=6761836011 country=US
+2026-05-25 08:43:47,659 WARNING src.signals.enrich metadata fetch failed for play/br.bet.sevengames: App not found(404).
+2026-05-25 08:43:50,129 WARNING src.signals.enrich metadata fetch failed for ios/6752611328: iTunes lookup returned no result for id=6752611328 country=US
+2026-05-25 08:43:51,535 WARNING src.signals.enrich metadata fetch failed for ios/6756781573: iTunes lookup returned no result for id=6756781573 country=US
+2026-05-25 08:43:55,441 INFO src.report.slack slack headline posted, 363 bytes
