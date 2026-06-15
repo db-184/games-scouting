@@ -1,0 +1,6 @@
+2026-06-15 10:41:18,578 WARNING __main__ no snapshot for today (2026-06-15); using latest available 2026-06-14
+2026-06-15 10:41:20,618 WARNING src.signals.enrich metadata fetch failed for play/tipico.sports: App not found(404).
+2026-06-15 10:41:32,687 WARNING src.signals.enrich metadata fetch failed for ios/6450693428: iTunes lookup returned no result for id=6450693428 country=US
+2026-06-15 10:41:39,454 WARNING src.signals.enrich metadata fetch failed for ios/6754262851: iTunes lookup returned no result for id=6754262851 country=US
+2026-06-15 10:41:46,785 WARNING src.signals.enrich metadata fetch failed for ios/6760114678: iTunes lookup returned no result for id=6760114678 country=US
+2026-06-15 10:41:52,774 INFO src.report.slack slack headline posted, 359 bytes
