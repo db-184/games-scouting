@@ -1,0 +1,6 @@
+2026-06-22 10:19:16,001 WARNING __main__ no snapshot for today (2026-06-22); using latest available 2026-06-21
+2026-06-22 10:19:32,907 WARNING src.signals.enrich metadata fetch failed for ios/848091833: iTunes lookup returned no result for id=848091833 country=US
+2026-06-22 10:19:38,409 WARNING src.signals.enrich metadata fetch failed for play/com.mobiin.gp: App not found(404).
+2026-06-22 10:19:42,333 WARNING src.signals.enrich metadata fetch failed for ios/6776991461: iTunes lookup returned no result for id=6776991461 country=US
+2026-06-22 10:19:45,909 WARNING src.signals.enrich metadata fetch failed for ios/6779215133: iTunes lookup returned no result for id=6779215133 country=US
+2026-06-22 10:19:48,454 INFO src.report.slack slack headline posted, 381 bytes
