@@ -1,0 +1,8 @@
+2026-06-29 09:13:28,228 WARNING __main__ no snapshot for today (2026-06-29); using latest available 2026-06-28
+2026-06-29 09:13:34,720 WARNING src.signals.enrich metadata fetch failed for play/com.betboom.kmm: App not found(404).
+2026-06-29 09:13:38,828 WARNING src.signals.enrich metadata fetch failed for ios/1541570980: iTunes lookup returned no result for id=1541570980 country=US
+2026-06-29 09:13:40,744 WARNING src.signals.enrich metadata fetch failed for ios/6446659989: iTunes lookup returned no result for id=6446659989 country=US
+2026-06-29 09:13:46,395 WARNING src.signals.enrich metadata fetch failed for ios/6760022528: iTunes lookup returned no result for id=6760022528 country=US
+2026-06-29 09:13:46,629 WARNING src.signals.enrich metadata fetch failed for ios/6757894204: iTunes lookup returned no result for id=6757894204 country=US
+2026-06-29 09:13:48,735 WARNING src.signals.enrich metadata fetch failed for ios/6748289603: iTunes lookup returned no result for id=6748289603 country=US
+2026-06-29 09:13:51,054 INFO src.report.slack slack headline posted, 362 bytes
