@@ -1,0 +1,18 @@
+2026-09-28 11:04:58,184 WARNING __main__ no snapshot for today (2026-09-28); using latest available 2026-07-03
+2026-09-28 11:05:10,428 WARNING src.signals.enrich metadata fetch failed for ios/1470173983: iTunes lookup returned no result for id=1470173983 country=US
+2026-09-28 11:05:11,409 WARNING src.signals.enrich metadata fetch failed for ios/6692611665: iTunes lookup returned no result for id=6692611665 country=US
+2026-09-28 11:05:12,675 WARNING src.signals.enrich metadata fetch failed for ios/1128255542: iTunes lookup returned no result for id=1128255542 country=US
+2026-09-28 11:05:13,173 WARNING src.signals.enrich metadata fetch failed for ios/1015521325: iTunes lookup returned no result for id=1015521325 country=US
+2026-09-28 11:05:13,796 WARNING src.signals.enrich metadata fetch failed for ios/1032346221: iTunes lookup returned no result for id=1032346221 country=US
+2026-09-28 11:05:14,753 WARNING src.signals.enrich metadata fetch failed for ios/1160056295: iTunes lookup returned no result for id=1160056295 country=US
+2026-09-28 11:05:15,874 WARNING src.signals.enrich metadata fetch failed for ios/6670377706: iTunes lookup returned no result for id=6670377706 country=US
+2026-09-28 11:05:16,477 WARNING src.signals.enrich metadata fetch failed for ios/6670476964: iTunes lookup returned no result for id=6670476964 country=US
+2026-09-28 11:05:16,780 WARNING src.signals.enrich metadata fetch failed for ios/6762120180: iTunes lookup returned no result for id=6762120180 country=US
+2026-09-28 11:05:17,199 WARNING src.signals.enrich metadata fetch failed for ios/6786691850: iTunes lookup returned no result for id=6786691850 country=US
+2026-09-28 11:05:18,167 WARNING src.signals.enrich metadata fetch failed for ios/6784593561: iTunes lookup returned no result for id=6784593561 country=US
+2026-09-28 11:05:19,498 WARNING src.signals.enrich metadata fetch failed for ios/6760393032: iTunes lookup returned no result for id=6760393032 country=US
+2026-09-28 11:05:19,611 WARNING src.signals.enrich metadata fetch failed for ios/6779315767: iTunes lookup returned no result for id=6779315767 country=US
+2026-09-28 11:05:20,698 WARNING src.signals.enrich metadata fetch failed for ios/6786322796: iTunes lookup returned no result for id=6786322796 country=US
+2026-09-28 11:05:21,372 WARNING src.signals.enrich metadata fetch failed for ios/6771406901: iTunes lookup returned no result for id=6771406901 country=US
+2026-09-28 11:05:21,948 WARNING src.signals.enrich metadata fetch failed for ios/6783595605: iTunes lookup returned no result for id=6783595605 country=US
+2026-09-28 11:05:22,650 INFO src.report.slack slack headline posted, 387 bytes
